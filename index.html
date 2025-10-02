@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radhe Clinic - Homeopathy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f9f9f9;
+    }
+    header {
+      background: linear-gradient(135deg, #38b2ac, #319795);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-radius: 0 0 50% 50% / 10%;
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+    header p { font-size: 1.1rem; opacity: 0.9; }
+
+    .container { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
+
+    .about, .services, .doctors, .appointment {
+      background: white;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .about h2, .services h2, .doctors h2, .appointment h2 {
+      color: #2c7a7b;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      text-align: center;
+    }
+    .about p { text-align: center; font-size: 1rem; }
+
+    .services-list, .doctor-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .service, .doctor {
+      background: #f1fdfc;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service:hover, .doctor:hover { transform: translateY(-5px); }
+    .service h3, .doctor { color: #2c7a7b; margin-bottom: 0.5rem; font-weight: 600; }
+    .doctor span { display: block; font-weight: 400; color: #555; margin-top: 0.3rem; }
+
+    /* FORM */
+    form {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    label { font-weight: 600; }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    textarea { resize: vertical; min-height: 100px; }
+    button {
+      background: #319795;
+      color: white;
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover { background: #2c7a7b; }
+
+    footer {
+      background: #2c7a7b;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 1rem 1rem 0 0;
+      margin-top: 2rem;
+    }
+    footer p { font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .about h2, .services h2, .doctors h2, .appointment h2 { font-size: 1.5rem; }
+      input, select, textarea, button { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Radhe Clinic</h1>
+  <p>Professional Homeopathy Care | Healing with Natural Remedies</p>
+</header>
+
+<div class="container">
+
+  <!-- ABOUT -->
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      At Radhe Clinic, we provide holistic and natural homeopathy treatment for various health conditions.  
+      Our team of expert doctors is dedicated to helping patients restore balance and well-being.
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services">
+    <h2>Our Specializations</h2>
+    <div class="services-list">
+      <div class="service"><h3>Skin & Hair</h3><p>Acne, eczema, psoriasis, hair fall & dandruff.</p></div>
+      <div class="service"><h3>Respiratory Health</h3><p>Asthma, allergies, sinusitis & bronchitis.</p></div>
+      <div class="service"><h3>Chronic Conditions</h3><p>Arthritis, migraine, thyroid & diabetes support.</p></div>
+      <div class="service"><h3>Women’s Health</h3><p>PCOS, hormonal imbalance, menstrual & menopausal care.</p></div>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section class="doctors">
+    <h2>Our Doctors</h2>
+    <div class="doctor-list">
+      <div class="doctor">Dr. Anjali Pandya <span>📞 63550 03553</span></div>
+      <div class="doctor">Dr. Preksha Patel <span>📞 76229 14252</span></div>
+      <div class="doctor">Dr. Priti Ladola <span>📞 93134 20124</span></div>
+    </div>
+  </section>
+
+  <!-- APPOINTMENT -->
+  <section class="appointment">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" required min="1" max="120">
+
+      <label for="gender">Gender</label>
+      <select id="gender" required>
+        <option value="">-- Select --</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="city">City</label>
+      <input type="text" id="city" required>
+
+      <label for="address">Full Address</label>
+      <textarea id="address" required></textarea>
+
+      <label for="doctor">Which Doctor You Want to Consult?</label>
+      <select id="doctor" required>
+        <option value="">-- Select Doctor --</option>
+        <option value="anjali">Dr. Anjali Pandya</option>
+        <option value="preksha">Dr. Preksha Patel</option>
+        <option value="priti">Dr. Priti Ladola</option>
+      </select>
+
+      <label for="datetime">Preferred Date & Time</label>
+      <input type="datetime-local" id="datetime" required>
+
+      <label for="symptoms">Symptoms / Health Concerns</label>
+      <textarea id="symptoms" required></textarea>
+
+      <label for="phone">Contact Number</label>
+      <input type="tel" id="phone" required pattern="[0-9]{10,15}" title="Enter valid phone number (10-15 digits)">
+
+      <button type="submit">Book on WhatsApp</button>
+    </form>
+  </section>
+</div>
+
+<footer>
+  <p>&copy; 2025 Radhe Clinic | All Rights Reserved.</p>
+</footer>
+
+<script>
+document.getElementById("appointmentForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let name = document.getElementById("name").value.trim();
+  let age = document.getElementById("age").value.trim();
+  let gender = document.getElementById("gender").value;
+  let city = document.getElementById("city").value.trim();
+  let address = document.getElementById("address").value.trim();
+  let doctor = document.getElementById("doctor").value;
+  let datetime = document.getElementById("datetime").value;
+  let symptoms = document.getElementById("symptoms").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+
+  // Validate future date
+  let selectedDate = new Date(datetime);
+  let now = new Date();
+  if(selectedDate <= now){
+    alert("Please select a future date and time.");
+    return;
+  }
+
+  let options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+  let formattedDate = selectedDate.toLocaleString('en-US', options);
+
+  // Doctor data
+  let doctors = {
+    anjali: { number: "916355003553", name: "Dr. Anjali Pandya" },
+    preksha: { number: "917622914252", name: "Dr. Preksha Patel" },
+    priti: { number: "919313420124", name: "Dr. Priti Ladola" }
+  };
+  let selectedDoctor = doctors[doctor];
+  if(!selectedDoctor){ alert("Please select a doctor."); return; }
+
+  // WhatsApp message with professional icons
+  let message = `*New Appointment Request*\n` +
+                `📌 Clinic: Radhe Clinic\n` +
+                `👤 Name: ${name}\n` +
+                `📅 Age: ${age}\n` +
+                `⚧ Gender: ${gender}\n` +
+                `🌍 City: ${city}\n` +
+                `🏠 Address: ${address}\n` +
+                `👨‍⚕️ Doctor: ${selectedDoctor.name}\n` +
+                `⏰ Preferred Time: ${formattedDate}\n` +
+                `📝 Symptoms: ${symptoms}\n` +
+                `📞 Contact: ${phone}`;
+
+  let encodedMessage = encodeURIComponent(message);
+  window.open(`https://wa.me/${selectedDoctor.number}?text=${encodedMessage}`, "_blank");
+});
+</script>
+</body>
+</html>
