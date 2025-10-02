@@ -55,9 +55,9 @@
     }
     .service:hover, .doctor:hover { transform: translateY(-5px); }
     .service h3, .doctor { color: #2c7a7b; margin-bottom: 0.5rem; font-weight: 600; }
+    .service p { font-size: 0.95rem; color: #555; }
     .doctor span { display: block; font-weight: 400; color: #555; margin-top: 0.3rem; }
 
-    /* FORM */
     form {
       display: grid;
       gap: 1rem;
@@ -123,10 +123,16 @@
   <section class="services">
     <h2>Our Specializations</h2>
     <div class="services-list">
-      <div class="service"><h3>Skin & Hair</h3><p>Acne, eczema, psoriasis, hair fall & dandruff.</p></div>
-      <div class="service"><h3>Respiratory Health</h3><p>Asthma, allergies, sinusitis & bronchitis.</p></div>
-      <div class="service"><h3>Chronic Conditions</h3><p>Arthritis, migraine, thyroid & diabetes support.</p></div>
-      <div class="service"><h3>Women’s Health</h3><p>PCOS, hormonal imbalance, menstrual & menopausal care.</p></div>
+      <div class="service"><h3>Respiratory Issues</h3><p>Asthma, pneumonia, chronic cough, hay fever, sinus, ear infections, mouth ulcer.</p></div>
+      <div class="service"><h3>Skin Conditions</h3><p>Eczema, psoriasis, warts, allergies, dermatitis.</p></div>
+      <div class="service"><h3>Musculoskeletal</h3><p>Arthritis, gout, joint pain, back pain, sprains.</p></div>
+      <div class="service"><h3>Digestive Disorders</h3><p>IBS, indigestion, peptic ulcer, abdominal colic.</p></div>
+      <div class="service"><h3>Neurological</h3><p>Migraines, chronic headaches.</p></div>
+      <div class="service"><h3>Mental Health</h3><p>Anxiety, stress, depression.</p></div>
+      <div class="service"><h3>Women’s Health</h3><p>PMS, menopausal symptoms, menstrual issues.</p></div>
+      <div class="service"><h3>Childhood Ailments</h3><p>Teething problems, diarrhea, common childhood illnesses.</p></div>
+      <div class="service"><h3>Renal Problems</h3><p>Kidney stones, UTI, pyelonephritis.</p></div>
+      <div class="service"><h3>Hair Care</h3><p>Hairfall, dandruff, alopecia.</p></div>
     </div>
   </section>
 
@@ -215,7 +221,6 @@ document.getElementById("appointmentForm").addEventListener("submit", function(e
   let options = { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
   let formattedDate = selectedDate.toLocaleString('en-US', options);
 
-  // Doctor data
   let doctors = {
     anjali: { number: "916355003553", name: "Dr. Anjali Pandya" },
     preksha: { number: "917622914252", name: "Dr. Preksha Patel" },
@@ -224,22 +229,23 @@ document.getElementById("appointmentForm").addEventListener("submit", function(e
   let selectedDoctor = doctors[doctor];
   if(!selectedDoctor){ alert("Please select a doctor."); return; }
 
-  // WhatsApp message with professional icons
-  let message = `*New Appointment Request*\n` +
-                `📌 Clinic: Radhe Clinic\n` +
-                `👤 Name: ${name}\n` +
-                `📅 Age: ${age}\n` +
-                `⚧ Gender: ${gender}\n` +
-                `🌍 City: ${city}\n` +
-                `🏠 Address: ${address}\n` +
-                `👨‍⚕️ Doctor: ${selectedDoctor.name}\n` +
-                `⏰ Preferred Time: ${formattedDate}\n` +
-                `📝 Symptoms: ${symptoms}\n` +
-                `📞 Contact: ${phone}`;
+  // WhatsApp message (no emojis, uses bold formatting)
+  let message = `*New Appointment Request*
+*Clinic:* Radhe Clinic
+*Name:* ${name}
+*Age:* ${age}
+*Gender:* ${gender}
+*City:* ${city}
+*Address:* ${address}
+*Doctor:* ${selectedDoctor.name}
+*Preferred Time:* ${formattedDate}
+*Symptoms:* ${symptoms}
+*Contact:* ${phone}`;
 
   let encodedMessage = encodeURIComponent(message);
   window.open(`https://wa.me/${selectedDoctor.number}?text=${encodedMessage}`, "_blank");
 });
 </script>
+
 </body>
 </html>
