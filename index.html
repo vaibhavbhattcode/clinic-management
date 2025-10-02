@@ -25,20 +25,25 @@
 
     .container { max-width: 1100px; margin: auto; padding: 2rem 1rem; }
 
-    .about, .services, .doctors, .appointment {
+    section {
       background: white;
       margin-bottom: 2rem;
       padding: 2rem;
       border-radius: 1rem;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
-    .about h2, .services h2, .doctors h2, .appointment h2 {
+    section h2 {
       color: #2c7a7b;
       margin-bottom: 1rem;
       font-size: 1.8rem;
       text-align: center;
     }
-    .about p { text-align: center; font-size: 1rem; }
+
+    .about p, .consultation-card p, .service p, .doctor span {
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
 
     .services-list, .doctor-list {
       display: grid;
@@ -55,8 +60,24 @@
     }
     .service:hover, .doctor:hover { transform: translateY(-5px); }
     .service h3, .doctor { color: #2c7a7b; margin-bottom: 0.5rem; font-weight: 600; }
-    .service p { font-size: 0.95rem; color: #555; }
-    .doctor span { display: block; font-weight: 400; color: #555; margin-top: 0.3rem; }
+    .service p { font-size: 0.95rem; }
+    .doctor span { display: block; font-weight: 400; margin-top: 0.3rem; }
+
+    /* Consultation Section Styles */
+    .consultation-card {
+      background: #e0f7f6;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      max-width: 500px;
+      margin: auto;
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+    }
+    .consultation-card p {
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
 
     form {
       display: grid;
@@ -96,7 +117,7 @@
 
     @media (max-width: 600px) {
       header h1 { font-size: 1.8rem; }
-      .about h2, .services h2, .doctors h2, .appointment h2 { font-size: 1.5rem; }
+      section h2 { font-size: 1.5rem; }
       input, select, textarea, button { font-size: 0.9rem; }
     }
   </style>
@@ -133,6 +154,17 @@
       <div class="service"><h3>Childhood Ailments</h3><p>Teething problems, diarrhea, common childhood illnesses.</p></div>
       <div class="service"><h3>Renal Problems</h3><p>Kidney stones, UTI, pyelonephritis.</p></div>
       <div class="service"><h3>Hair Care</h3><p>Hairfall, dandruff, alopecia.</p></div>
+    </div>
+  </section>
+
+  <!-- CONSULTATION DETAILS -->
+  <section class="consultation">
+    <h2>Consultation Details</h2>
+    <div class="consultation-card">
+      <p><strong>💰 Consultation Fee:</strong> ₹200 per session</p>
+      <p><strong>💻 Mode:</strong> Online Consultation</p>
+      <p><strong>⏱ Duration:</strong> 30 minutes per session</p>
+      <p><strong>📌 Benefits:</strong> Follow-up support, personalized home remedies, holistic guidance.</p>
     </div>
   </section>
 
@@ -229,7 +261,7 @@ document.getElementById("appointmentForm").addEventListener("submit", function(e
   let selectedDoctor = doctors[doctor];
   if(!selectedDoctor){ alert("Please select a doctor."); return; }
 
-  // WhatsApp message (no emojis, uses bold formatting)
+  // WhatsApp message (bold formatting, safe emojis)
   let message = `*New Appointment Request*
 *Clinic:* Radhe Clinic
 *Name:* ${name}
